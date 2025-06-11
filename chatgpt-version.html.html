@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLM Prompting Framework</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f8fafc, #eef2f7);
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(to right, #6366f1, #8b5cf6);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    h2 {
+      font-size: 22px;
+      margin-top: 40px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      padding: 20px;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .card-header h3 {
+      margin: 0;
+    }
+    .card-body {
+      display: none;
+      padding-top: 10px;
+    }
+    .copy-button {
+      background: #10b981;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    pre {
+      background: #f1f5f9;
+      padding: 10px;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+    nav {
+      margin-top: 10px;
+    }
+    nav a {
+      display: inline-block;
+      margin-right: 10px;
+      color: #6366f1;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🚀 LLM Prompting Framework</h1>
+  <p>Quick Reference Guide for Commercial Real Estate Professionals</p>
+</header>
+
+<div class="container">
+  <nav>
+    <a href="#sipr">SIPR</a>
+    <a href="#goal">GOAL</a>
+    <a href="#5w1h">5W1H</a>
+    <a href="#rtf">RTF</a>
+    <a href="#tag">TAG</a>
+    <a href="#bab">BAB</a>
+    <a href="#care">CARE</a>
+    <a href="#rise">RISE</a>
+  </nav>
+
+  <div class="card" id="sipr">
+    <div class="card-header" onclick="toggleCardBody(this)">
+      <h3>SIPR - The Universal Template</h3>
+      <span>▼</span>
+    </div>
+    <div class="card-body">
+      <h4>Copy-Paste Template</h4>
+      <pre id="sipr-template">Scenario: [Describe the context or situation you need help with.]
+Input: [List preferences, data, constraints, or files.]
+Process: [How you want it approached—tone, format, structure.]
+Result: [Final output—summary, bullets, markdown, etc.]</pre>
+      <button class="copy-button" onclick="copyToClipboard('sipr-template')">Copy Template</button>
+      <h4>Example</h4>
+      <pre>Scenario: I'm prepping a leasing strategy brief for a backfill site in Cool Springs.
+Input: Target demo, historical occupancy, broker notes, and competitor rents.
+Process: Structured summary with markdown and bullet points.
+Result: Bullet list of leasing angles + short paragraph with recommendation.</pre>
+      <a href="#">↑ Jump to Top</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function toggleCardBody(header) {
+    const body = header.nextElementSibling;
+    body.style.display = body.style.display === 'block' ? 'none' : 'block';
+  }
+
+  function copyToClipboard(elementId) {
+    const text = document.getElementById(elementId).innerText;
+    navigator.clipboard.writeText(text).then(() => alert('Copied!'));
+  }
+</script>
+
+</body>
+</html>
