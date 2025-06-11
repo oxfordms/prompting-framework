@@ -102,12 +102,18 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+            border: 3px solid transparent;
         }
         
         .template-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .template-card.active {
+            border: 3px solid #3498db;
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.2);
         }
         
         .template-header {
@@ -336,7 +342,7 @@
         
         <div class="templates-grid">
             <!-- SIPR Template -->
-            <div class="template-card" id="sipr-section">
+            <div class="template-card active" id="sipr-section">
                 <div class="template-header sipr" onclick="toggleContent(this)">
                     <span class="emoji">📋</span>
                     <span>SIPR - The Universal Template</span>
@@ -368,7 +374,7 @@ Result: Shopping list + cooking schedule + backup plan for weather.</div>
             </div>
             
             <!-- GOAL Template -->
-            <div class="template-card" id="goal-section">
+            <div class="template-card active" id="goal-section">
                 <div class="template-header goal" onclick="toggleContent(this)">
                     <span class="emoji">🎯</span>
                     <span>GOAL - Strategic Planning</span>
@@ -400,7 +406,7 @@ Learning: Monitor which budget categories provide best ROI for lifestyle vs. wea
             </div>
             
             <!-- 5W1H Template -->
-            <div class="template-card" id="w5h1-section">
+            <div class="template-card active" id="w5h1-section">
                 <div class="template-header w5h1" onclick="toggleContent(this)">
                     <span class="emoji">🔍</span>
                     <span>5W1H - Comprehensive Analysis</span>
@@ -438,7 +444,7 @@ How: Create a simple, equipment-flexible routine with progression tracking.</div
             </div>
             
             <!-- RTF Template -->
-            <div class="template-card" id="rtf-section">
+            <div class="template-card active" id="rtf-section">
                 <div class="template-header rtf" onclick="toggleContent(this)">
                     <span class="emoji">⚙️</span>
                     <span>RTF - Role-Task-Format</span>
@@ -467,7 +473,7 @@ Format: Ranking table with QPR scores and brief flavor profiles</div>
             </div>
             
             <!-- TAG Template -->
-            <div class="template-card" id="tag-section">
+            <div class="template-card active" id="tag-section">
                 <div class="template-header tag" onclick="toggleContent(this)">
                     <span class="emoji">🏃</span>
                     <span>TAG - Task-Action-Goal</span>
@@ -496,7 +502,7 @@ Goal: Better understand economic factors leading to independence movement.</div>
             </div>
             
             <!-- BAB Template -->
-            <div class="template-card" id="bab-section">
+            <div class="template-card active" id="bab-section">
                 <div class="template-header bab" onclick="toggleContent(this)">
                     <span class="emoji">🔄</span>
                     <span>BAB - Before-After-Bridge</span>
@@ -525,7 +531,7 @@ Bridge: Choose specific reading plan, set phone aside, create dedicated space, t
             </div>
             
             <!-- CARE Template -->
-            <div class="template-card" id="care-section">
+            <div class="template-card active" id="care-section">
                 <div class="template-header care" onclick="toggleContent(this)">
                     <span class="emoji">📚</span>
                     <span>CARE - Context-Action-Result-Example</span>
@@ -557,7 +563,7 @@ Example: Highlands Bar & Grill in Birmingham - booked 2 months ahead, worth ever
             </div>
             
             <!-- RISE Template -->
-            <div class="template-card" id="rise-section">
+            <div class="template-card active" id="rise-section">
                 <div class="template-header rise" onclick="toggleContent(this)">
                     <span class="emoji">📈</span>
                     <span>RISE - Role-Input-Steps-Expectation</span>
@@ -615,6 +621,7 @@ Expectation: Balanced analysis highlighting intriguing questions while maintaini
                 const content = element.querySelector('.template-content');
                 if (content && !content.classList.contains('expanded')) {
                     content.classList.add('expanded');
+                    element.classList.add('active');
                 }
                 
                 element.scrollIntoView({ 
@@ -626,20 +633,42 @@ Expectation: Balanced analysis highlighting intriguing questions while maintaini
         
         function toggleContent(header) {
             const content = header.nextElementSibling;
+            const card = header.parentElement;
+            
+            // Toggle the content
             content.classList.toggle('expanded');
+            
+            // Update active state
+            if (content.classList.contains('expanded')) {
+                card.classList.add('active');
+            } else {
+                card.classList.remove('active');
+            }
         }
         
         function expandAll() {
             const allContent = document.querySelectorAll('.template-content');
+            const allCards = document.querySelectorAll('.template-card');
+            
             allContent.forEach(content => {
                 content.classList.add('expanded');
+            });
+            
+            allCards.forEach(card => {
+                card.classList.add('active');
             });
         }
         
         function collapseAll() {
             const allContent = document.querySelectorAll('.template-content');
+            const allCards = document.querySelectorAll('.template-card');
+            
             allContent.forEach(content => {
                 content.classList.remove('expanded');
+            });
+            
+            allCards.forEach(card => {
+                card.classList.remove('active');
             });
         }
     </script>
