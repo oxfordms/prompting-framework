@@ -1,77 +1,559 @@
-
-[Chris Caldwell – Final Memory Blocks]
-Generated on 2025-05-06 19:35:47
-
----
-
-📌 MEMORY BLOCK #1: CHRIS CALDWELL – MASTER PROFILE
-
-Chris Caldwell is the Managing Director of Leasing at TSCG, responsible for overseeing Tennessee, Mississippi, Alabama, Kentucky, and the Florida Panhandle (excluding Tallahassee). He manages five offices in Nashville, Memphis, Louisville, Huntsville, and Birmingham, and focuses on retail leasing strategy, asset value optimization, team leadership, and business development. 
-
-Workflows & Systems:
-- Uses Cloze CRM with tailored “Next Step” flows, contact history tracking, and territory-based follow-ups. Client and owner outreach is strategic and structured.
-- Relies on separate projects to manage high-detail workflows: “Listing Agreement Review,” “CRE Summaries,” and “Daily Briefing.” These house redline rules, article formatting, and news structure.
-- In all contract analysis, references to articles, sections, and subsections must be precise and legally traceable. These rules are documented in the Listing Agreement Review project.
-
-Finance & Income Tracking:
-- Uses Monarch Money for tracking fixed salary, override deposits, reimbursements, break-even goals, and estimated quarterly taxes.
-- Also uses a custom Google Sheet for high-level strategy, categorized income vs. variable overrides.
-- Tracks pending check deposits with $0 manual entries in Monarch, storing actual details in the notes field until reconciled.
-
-Fitness & Nutrition:
-- Trains 3x/week using a full-body routine based on Drew Baye and Ted Naiman’s protocols: time-under-tension, progressive overload, short duration.
-- Equipment includes adjustable dumbbells (5–55 lbs), pull-up bar, bench, rower, mats. Accommodates a slightly weaker right shoulder (mostly recovered from frozen shoulder).
-- Nutrition strategy prioritizes satiety, protein leverage, and P:E ratio analysis. Minimal calorie tracking; focuses on nutrient density.
-
-Style & Preferences:
-- Prefers structured, concise responses with optional dry wit and zero fluff.
-- Uses ☐ checkboxes for follow-ups, not bullet points or dashes.
-- Avoids “woke” tone. Never uses “anytime” (always “any time”).
-- Drafts should exclude quotation marks for easy copying.
-- Cross-platform comparisons (ChatGPT, Grok, Gemini) should be integrated when summarizing articles or research findings.
-
----
-
-📌 MEMORY BLOCK #2: CHRIS – COOKING PREFERENCES & GEAR
-
-Chris is a technique-driven home cook with professional-level equipment: two sous vide machines, Vitamix, Instant Pot, KitchenAid mixer with pasta roller and cutter, Tovala oven, air fryer, immersion blender, and sharpening tools for a complete knife set. Pantry is well-stocked with MSG, Jane’s Krazy Mixed-Up Salt, Better Than Bouillon, oils, vinegars (including Moscatel), citrus, garlic, onions, and fresh vegetables.
-
-Cooking Preferences & Style:
-- Prefers bold, layered flavors—especially Latin, Tex-Mex, Italian, and Mediterranean profiles.
-- Avoids fennel and pesto entirely.
-- Follows a protein-leverage and satiety-first approach to meal planning. Calorie tracking is minimal.
-- Considers soup a culinary benchmark. Enjoys making homemade stock when time allows.
-- On first attempts, he closely follows the original recipe with light seasoning tweaks. More aggressive modifications are made after evaluating results.
-
-Special Notes:
-- Royal Red shrimp are a favorite. Sautéed for 2–3 minutes or boiled only until water returns to a boil. Prefers minimal sauces and quick-cooking techniques to preserve flavor.
-- Vinegar preferences depend on dish: red wine vinegar for bolder applications, Moscatel for sweeter balance in vinaigrettes.
-
----
-
-📌 MEMORY BLOCK #3: CHRIS – FAVORITE CHEFS, SITES & RECIPE RULES
-
-Chris prioritizes recipes from a curated list of trusted chefs and creators. Recipe searches must check these sources first. If no match is found, outside sources are acceptable with verified links, reviews, or ratings included.
-
-Followed Chefs & Creators (as of May 2025):
-Kenji López-Alt, Brian Lagerstrom, Christopher Kimball, Stephen Cusato (Not Another Cooking Show), Adam Ragusea, Serious Eats, Milk Street, America’s Test Kitchen, Chef John, The Cajun Ninja, Ethan Chlebowski, Chef Billy Parisi, Chef James Makinson, Jason Farmer, Alex (French Guy Cooking), Cooking with Chris, Sad_Papi.
-
-Primary Recipe Sources:
-- Serious Eats
-- Milk Street
-- NotAnotherCookingShow.tv
-- YouTube channels from listed chefs
-
-Review & Research Sites:
-- Eat Your Books
-- Cookbooker
-- Reddit (r/Cookbooks, r/Old_Recipes)
-
-Recipe Request Rules:
-- Always check Chris’s preferred chefs first. If unavailable, link to a real, rated recipe.
-- Never invent or approximate a recipe.
-- Include ratings, review summaries, or user feedback where possible.
-- Track whether the recipe is a first-time try or repeat. Avoid suggesting repeats too soon.
-- Include prior stored notes or tweaks when recommending a previously made dish.
-
---- END OF MEMORY BLOCKS ---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Prompting Framework</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .quick-guide {
+            background: #f8f9fa;
+            padding: 25px;
+            border-bottom: 3px solid #e9ecef;
+        }
+        
+        .quick-guide h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .use-case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .use-case {
+            background: white;
+            border-left: 4px solid;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .use-case.general { border-left-color: #3498db; }
+        .use-case.strategic { border-left-color: #e74c3c; }
+        .use-case.analysis { border-left-color: #f39c12; }
+        .use-case.process { border-left-color: #27ae60; }
+        .use-case.creative { border-left-color: #9b59b6; }
+        
+        .use-case h3 {
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+        
+        .use-case p {
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+        
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            padding: 30px;
+        }
+        
+        .template-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .template-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .template-header {
+            padding: 20px;
+            font-weight: 700;
+            color: white;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sipr { background: linear-gradient(135deg, #3498db, #2980b9); }
+        .goal { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .w5h1 { background: linear-gradient(135deg, #f39c12, #e67e22); }
+        .rtf { background: linear-gradient(135deg, #27ae60, #229954); }
+        .tag { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
+        .bab { background: linear-gradient(135deg, #1abc9c, #16a085); }
+        .care { background: linear-gradient(135deg, #e67e22, #d35400); }
+        .rise { background: linear-gradient(135deg, #34495e, #2c3e50); }
+        
+        .template-content {
+            padding: 25px;
+        }
+        
+        .template-box {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        
+        .example-box {
+            background: #e8f5e8;
+            border: 2px solid #27ae60;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        
+        .section-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin: 20px 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .copy-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8em;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+            background: #2980b9;
+        }
+        
+        .use-case a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .use-case a:hover {
+            color: #2c3e50;
+            text-decoration: underline;
+        }
+        
+        .jump-top {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid #e9ecef;
+        }
+        
+        .jump-top a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .jump-top a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .emoji {
+            font-size: 1.2em;
+        }
+        
+        @media (max-width: 768px) {
+            .templates-grid {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+            
+            .use-case-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 LLM Prompting Framework</h1>
+            <p>Quick Reference Guide for Commercial Real Estate Professionals</p>
+        </div>
+        
+        <div class="quick-guide" id="top">
+            <h2><span class="emoji">⚡</span> When to Use Which Template</h2>
+            <div class="use-case-grid">
+                <div class="use-case general">
+                    <h3><a onclick="scrollToSection('sipr-section')">📋 SIPR - General Purpose</a></h3>
+                    <p><strong>Best for:</strong> Daily tasks, reports, analysis. Your go-to template for most situations.</p>
+                </div>
+                <div class="use-case strategic">
+                    <h3><a onclick="scrollToSection('goal-section')">🎯 GOAL - Strategic Planning</a></h3>
+                    <p><strong>Best for:</strong> Long-term projects, workflow automation, process improvement.</p>
+                </div>
+                <div class="use-case analysis">
+                    <h3><a onclick="scrollToSection('w5h1-section')">🔍 5W1H - Detailed Analysis</a></h3>
+                    <p><strong>Best for:</strong> Complex situations, coordination tasks, comprehensive evaluation.</p>
+                </div>
+                <div class="use-case process">
+                    <h3><a onclick="scrollToSection('rtf-section')">⚙️ RTF/TAG - Quick Tasks</a></h3>
+                    <p><strong>Best for:</strong> Simple requests, specific formatting needs, immediate actions.</p>
+                </div>
+                <div class="use-case creative">
+                    <h3><a onclick="scrollToSection('bab-section')">🔄 BAB/CARE/RISE - Problem Solving</a></h3>
+                    <p><strong>Best for:</strong> Process improvement, storytelling, complex transformations.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="templates-grid">
+            <!-- SIPR Template -->
+            <div class="template-card" id="sipr-section">
+                <div class="template-header sipr">
+                    <span class="emoji">📋</span>
+                    <span>SIPR - The Universal Template</span>
+                </div>
+                <div class="template-content">
+                    <div class="section-title"><span class="emoji">📄</span> Copy-Paste Template</div>
+                    <div class="template-box" id="sipr-template">Scenario: [Describe the context or situation you need help with.]
+Input: [List any preferences, data, constraints, or files.]
+Process: [Tell me how you want this approached—tone, format, structure.]
+Result: [Define the final output—summary, bullet points, markdown, analysis, etc.]</div>
+                    <button class="copy-btn" onclick="copyText('sipr-template')">📋 Copy Template</button>
+                    
+                    <div class="section-title"><span class="emoji">✅</span> CRE Example</div>
+                    <div class="example-box">Scenario: I'm prepping a leasing strategy brief for a backfill site in Cool Springs.
+Input: Target demo, historical occupancy, broker notes, and competitor rents.
+Process: Structured summary with markdown and bullet points. Tone should be strategic and direct.
+Result: Bullet list of leasing angles + short paragraph with recommendation.</div>
+                    
+                    <div class="section-title"><span class="emoji">🏠</span> Personal Example</div>
+                    <div class="example-box">Scenario: Planning a large-batch grilling menu for Ole Miss tailgate party.
+Input: 20 people, keto-friendly options, budget $300, 4-hour cook window.
+Process: Protein-forward menu with prep timeline. Focus on make-ahead items and grilling efficiency.
+Result: Shopping list + cooking schedule + backup plan for weather.</div>
+                    
+                    <div class="jump-top">
+                        <a onclick="scrollToSection('top')">⬆️ Jump to Top</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- GOAL Template -->
+            <div class="template-card" id="goal-section">
+                <div class="template-header goal">
+                    <span class="emoji">🎯</span>
+                    <span>GOAL - Strategic Planning</span>
+                </div>
+                <div class="template-content">
+                    <div class="section-title"><span class="emoji">📄</span> Copy-Paste Template</div>
+                    <div class="template-box" id="goal-template">Goal: [What's the big picture you want to achieve?]
+Objective: [What's a specific milestone or target within that goal?]
+Actions: [List the steps that will move you toward the objective.]
+Learning: [What should be evaluated or adjusted along the way or at the end?]</div>
+                    <button class="copy-btn" onclick="copyText('goal-template')">📋 Copy Template</button>
+                    
+                    <div class="section-title"><span class="emoji">✅</span> CRE Example</div>
+                    <div class="example-box">Goal: Build a reliable weekly CRE pipeline update flow.
+Objective: Automate regional deal collection and sorting.
+Actions: Use ChatGPT daily + Google Sheets integration for tracking.
+Learning: Evaluate what filters or sources yield the best market coverage.</div>
+                    
+                    <div class="section-title"><span class="emoji">💰</span> Personal Example</div>
+                    <div class="example-box">Goal: Optimize long-term wealth-building strategy while maintaining current lifestyle.
+Objective: Increase investment contributions by 20% without sacrificing quality dining experiences.
+Actions: Track monthly spending patterns, automate savings transfers, research tax-advantaged accounts.
+Learning: Monitor which budget categories provide best ROI for lifestyle vs. wealth accumulation.</div>
+                    
+                    <div class="jump-top">
+                        <a onclick="scrollToSection('top')">⬆️ Jump to Top</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 5W1H Template -->
+            <div class="template-card" id="w5h1-section">
+                <div class="template-header w5h1">
+                    <span class="emoji">🔍</span>
+                    <span>5W1H - Comprehensive Analysis</span>
+                </div>
+                <div class="template-content">
+                    <div class="section-title"><span class="emoji">📄</span> Copy-Paste Template</div>
+                    <div class="template-box" id="w5h1-template">Who: [Who's involved or impacted?]
+What: [What is the task, issue, or subject?]
+When: [Timeline, deadline, or duration.]
+Where: [Location, setting, or area of focus.]
+Why: [Purpose or importance of the task.]
+How: [How you want me to approach or solve it.]</div>
+                    <button class="copy-btn" onclick="copyText('w5h1-template')">📋 Copy Template</button>
+                    
+                    <div class="section-title"><span class="emoji">✅</span> CRE Example</div>
+                    <div class="example-box">Who: Me, my assistant, and the Nashville office.
+What: Coordinating CRE tour prep and tenant fit evaluation.
+When: This Friday afternoon.
+Where: Brentwood and Cool Springs.
+Why: To prioritize prospects for a backfill strategy.
+How: Give a checklist with tenant fit, traffic patterns, and submarket dynamics.</div>
+                    
+                    <div class="section-title"><span class="emoji">🏈</span> Personal Example</div>
+                    <div class="example-box">Who: Me and my accountability partner for fitness goals.
+What: Design a Drew Baye-style training program that fits my travel schedule.
+When: Starting next month, 3x per week, 6-month commitment.
+Where: Home gym and hotel gyms when traveling.
+Why: Want to maintain strength gains while managing busy CRE season.
+How: Create a simple, equipment-flexible routine with progression tracking.</div>
+                    
+                    <div class="jump-top">
+                        <a onclick="scrollToSection('top')">⬆️ Jump to Top</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RTF Template -->
+            <div class="template-card" id="rtf-section">
+                <div class="template-header rtf">
+                    <span class="emoji">⚙️</span>
+                    <span>RTF - Role-Task-Format</span>
+                </div>
+                <div class="template-content">
+                    <div class="section-title"><span class="emoji">📄</span> Copy-Paste Template</div>
+                    <div class="template-box" id="rtf-template">Role: [Who should I act as—CRE analyst, attorney, chef, etc.?]
+Task: [What should I do—summarize, write, create, etc.?]
+Format: [What should the output look like—bullets, table, memo, etc.?]</div>
+                    <button class="copy-btn" onclick="copyText('rtf-template')">📋 Copy Template</button>
+                    
+                    <div class="section-title"><span class="emoji">✅</span> CRE Example</div>
+                    <div class="example-box">Role: CRE leasing strategist
+Task: Evaluate tenant mix options for a vacant anchor box
+Format: Use a table comparing 3 tenant types with pros/cons</div>
+                    
+                    <div class="section-title"><span class="emoji">🍷</span> Personal Example</div>
+                    <div class="example-box">Role: Wine enthusiast and value hunter
+Task: Analyze these 5 wine tasting notes and recommend which to purchase
+Format: Ranking table with QPR scores and brief flavor profiles</div>
+                    
+                    <div class="jump-top">
+                        <a onclick="scrollToSection('top')">⬆️ Jump to Top</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TAG Template -->
+            <div class="template-card" id="tag-section">
+                <div class="template-header tag">
+                    <span class="emoji">🏃</span>
+                    <span>TAG - Task-Action-Goal</span>
+                </div>
+                <div class="template-content">
+                    <div class="section-title"><span class="emoji">📄</span> Copy-Paste Template</div>
+                    <div class="template-box" id="tag-template">Task: [What needs to be done?]
+Action: [What is the immediate next step?]
+Goal: [What is the long-term or overall goal of this?]</div>
+                    <button class="copy-btn" onclick="copyText('tag-template')">📋 Copy Template</button>
+                    
+                    <div class="section-title"><span class="emoji">✅</span> CRE Example</div>
+                    <div class="example-box">Task: Evaluate pricing on a new comp in our territory.
+Action: Pull rent roll and cap rate assumption from broker email.
+Goal: Decide whether to pursue for landlord backfill.</div>
+                    
+                    <div class="section-title"><span class="emoji">📚</span> Personal Example</div>
+                    <div class="example-box">Task: Research Colonial-era trade routes for my Revolutionary War studies.
+Action: Find 3 credible sources on Charleston and Savannah port records.
+Goal: Better understand economic factors leading to independence movement.</div>
+                    
+                    <div class="jump-top">
+                        <a onclick="scrollToSection('top')">⬆️ Jump to Top</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- BAB Template -->
+            <div class="template-card" id="bab-section">
+                <div class="template-header bab">
+                    <span class="emoji">🔄</span>
+                    <span>BAB - Before-After-Bridge</span>
+                </div>
+                <div class="template-content">
+                    <div class="section-title"><span class="emoji">📄</span> Copy-Paste Template</div>
+                    <div class="template-box" id="bab-template">Before: [Describe the current state or problem.]
+After: [Describe the desired future state.]
+Bridge: [Explain how to get from before to after—what actions or changes are required.]</div>
+                    <button class="copy-btn" onclick="copyText('bab-template')">📋 Copy Template</button>
+                    
+                    <div class="section-title"><span class="emoji">✅</span> CRE Example</div>
+                    <div class="example-box">Before: Our CRE summary formatting is inconsistent and slow.
+After: Use markdown with fixed headers and format.
+Bridge: Store reusable templates and define icon rules once.</div>
+                    
+                    <div class="section-title"><span class="emoji">⛪</span> Personal Example</div>
+                    <div class="example-box">Before: My daily devotion time is inconsistent and feels scattered.
+After: Establish a structured 20-minute morning routine that deepens my relationship with Christ.
+Bridge: Choose specific reading plan, set phone aside, create dedicated space, track consistency for 30 days.</div>
+                    
+                    <div class="jump-top">
+                        <a onclick="scrollToSection('top')">⬆️ Jump to Top</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CARE Template -->
+            <div class="template-card" id="care-section">
+                <div class="template-header care">
+                    <span class="emoji">📚</span>
+                    <span>CARE - Context-Action-Result-Example</span>
+                </div>
+                <div class="template-content">
+                    <div class="section-title"><span class="emoji">📄</span> Copy-Paste Template</div>
+                    <div class="template-box" id="care-template">Context: [Give me the background or setup.]
+Action: [What happened—what did you or someone do?]
+Result: [What was the outcome or impact?]
+Example: [Include a real or concrete example that illustrates this.]</div>
+                    <button class="copy-btn" onclick="copyText('care-template')">📋 Copy Template</button>
+                    
+                    <div class="section-title"><span class="emoji">✅</span> CRE Example</div>
+                    <div class="example-box">Context: We toured five potential tenants for a 20K SF box.
+Action: We tracked feedback in real-time and logged it with ChatGPT support.
+Result: Got a clearer view of leasing obstacles and interest levels.
+Example: Aspen Dental noted parking limitations and passed.</div>
+                    
+                    <div class="section-title"><span class="emoji">🍽️</span> Personal Example</div>
+                    <div class="example-box">Context: Trying to find chef-driven restaurants worth the drive in Southeast region.
+Action: Research James Beard winners and nominees, cross-reference with travel routes.
+Result: Built a database of 15 must-try spots with reservation strategies.
+Example: Highlands Bar & Grill in Birmingham - booked 2 months ahead, worth every mile.</div>
+                    
+                    <div class="jump-top">
+                        <a onclick="scrollToSection('top')">⬆️ Jump to Top</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RISE Template -->
+            <div class="template-card" id="rise-section">
+                <div class="template-header rise">
+                    <span class="emoji">📈</span>
+                    <span>RISE - Role-Input-Steps-Expectation</span>
+                </div>
+                <div class="template-content">
+                    <div class="section-title"><span class="emoji">📄</span> Copy-Paste Template</div>
+                    <div class="template-box" id="rise-template">Role: [What persona or role should I adopt?]
+Input: [What information or resources do I have?]
+Steps: [What do you want me to break down?]
+Expectation: [What does the finished output need to look like?]</div>
+                    <button class="copy-btn" onclick="copyText('rise-template')">📋 Copy Template</button>
+                    
+                    <div class="section-title"><span class="emoji">✅</span> CRE Example</div>
+                    <div class="example-box">Role: CRE site selection analyst
+Input: Map link, zoning overlay, anchor tenant wishlist
+Steps: Break down site pros/cons for each anchor type
+Expectation: Bullet summary + anchor match table</div>
+                    
+                    <div class="section-title"><span class="emoji">🔍</span> Personal Example</div>
+                    <div class="example-box">Role: Alternative theory researcher and critical thinker
+Input: Recent developments in ancient civilization theories, archaeological findings
+Steps: Evaluate evidence quality, identify logical gaps, compare to established history
+Expectation: Balanced analysis highlighting intriguing questions while maintaining healthy skepticism</div>
+                    
+                    <div class="jump-top">
+                        <a onclick="scrollToSection('top')">⬆️ Jump to Top</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function copyText(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+            
+            navigator.clipboard.writeText(text).then(function() {
+                const button = element.nextElementSibling;
+                const originalText = button.textContent;
+                button.textContent = '✅ Copied!';
+                button.style.background = '#27ae60';
+                
+                setTimeout(function() {
+                    button.textContent = originalText;
+                    button.style.background = '#3498db';
+                }, 2000);
+            });
+        }
+        
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+    </script>
+</body>
+</html>
