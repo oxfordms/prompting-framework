@@ -118,6 +118,12 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .template-header:hover {
+            filter: brightness(1.1);
         }
         
         .sipr { background: linear-gradient(135deg, #3498db, #2980b9); }
@@ -131,6 +137,52 @@
         
         .template-content {
             padding: 25px;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            max-height: 0;
+            padding: 0 25px;
+        }
+        
+        .template-content.expanded {
+            max-height: 2000px;
+            padding: 25px;
+        }
+        
+        .control-buttons {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-top: 2px solid #e9ecef;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .control-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .control-btn.collapse {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+        }
+        
+        .control-btn.collapse:hover {
+            box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3);
         }
         
         .template-box {
@@ -271,14 +323,25 @@
             </div>
         </div>
         
+        <div class="control-buttons">
+            <button class="control-btn expand" onclick="expandAll()">
+                <span class="emoji">📂</span>
+                <span>Expand All</span>
+            </button>
+            <button class="control-btn collapse" onclick="collapseAll()">
+                <span class="emoji">📁</span>
+                <span>Collapse All</span>
+            </button>
+        </div>
+        
         <div class="templates-grid">
             <!-- SIPR Template -->
             <div class="template-card" id="sipr-section">
-                <div class="template-header sipr">
+                <div class="template-header sipr" onclick="toggleContent(this)">
                     <span class="emoji">📋</span>
                     <span>SIPR - The Universal Template</span>
                 </div>
-                <div class="template-content">
+                <div class="template-content expanded">
                     <div class="section-title"><span class="emoji">📄</span> Copy-Paste Template</div>
                     <div class="template-box" id="sipr-template">Scenario: [Describe the context or situation you need help with.]
 Input: [List any preferences, data, constraints, or files.]
@@ -306,11 +369,11 @@ Result: Shopping list + cooking schedule + backup plan for weather.</div>
             
             <!-- GOAL Template -->
             <div class="template-card" id="goal-section">
-                <div class="template-header goal">
+                <div class="template-header goal" onclick="toggleContent(this)">
                     <span class="emoji">🎯</span>
                     <span>GOAL - Strategic Planning</span>
                 </div>
-                <div class="template-content">
+                <div class="template-content expanded">
                     <div class="section-title"><span class="emoji">📄</span> Copy-Paste Template</div>
                     <div class="template-box" id="goal-template">Goal: [What's the big picture you want to achieve?]
 Objective: [What's a specific milestone or target within that goal?]
@@ -338,11 +401,11 @@ Learning: Monitor which budget categories provide best ROI for lifestyle vs. wea
             
             <!-- 5W1H Template -->
             <div class="template-card" id="w5h1-section">
-                <div class="template-header w5h1">
+                <div class="template-header w5h1" onclick="toggleContent(this)">
                     <span class="emoji">🔍</span>
                     <span>5W1H - Comprehensive Analysis</span>
                 </div>
-                <div class="template-content">
+                <div class="template-content expanded">
                     <div class="section-title"><span class="emoji">📄</span> Copy-Paste Template</div>
                     <div class="template-box" id="w5h1-template">Who: [Who's involved or impacted?]
 What: [What is the task, issue, or subject?]
@@ -376,11 +439,11 @@ How: Create a simple, equipment-flexible routine with progression tracking.</div
             
             <!-- RTF Template -->
             <div class="template-card" id="rtf-section">
-                <div class="template-header rtf">
+                <div class="template-header rtf" onclick="toggleContent(this)">
                     <span class="emoji">⚙️</span>
                     <span>RTF - Role-Task-Format</span>
                 </div>
-                <div class="template-content">
+                <div class="template-content expanded">
                     <div class="section-title"><span class="emoji">📄</span> Copy-Paste Template</div>
                     <div class="template-box" id="rtf-template">Role: [Who should I act as—CRE analyst, attorney, chef, etc.?]
 Task: [What should I do—summarize, write, create, etc.?]
@@ -405,11 +468,11 @@ Format: Ranking table with QPR scores and brief flavor profiles</div>
             
             <!-- TAG Template -->
             <div class="template-card" id="tag-section">
-                <div class="template-header tag">
+                <div class="template-header tag" onclick="toggleContent(this)">
                     <span class="emoji">🏃</span>
                     <span>TAG - Task-Action-Goal</span>
                 </div>
-                <div class="template-content">
+                <div class="template-content expanded">
                     <div class="section-title"><span class="emoji">📄</span> Copy-Paste Template</div>
                     <div class="template-box" id="tag-template">Task: [What needs to be done?]
 Action: [What is the immediate next step?]
@@ -434,11 +497,11 @@ Goal: Better understand economic factors leading to independence movement.</div>
             
             <!-- BAB Template -->
             <div class="template-card" id="bab-section">
-                <div class="template-header bab">
+                <div class="template-header bab" onclick="toggleContent(this)">
                     <span class="emoji">🔄</span>
                     <span>BAB - Before-After-Bridge</span>
                 </div>
-                <div class="template-content">
+                <div class="template-content expanded">
                     <div class="section-title"><span class="emoji">📄</span> Copy-Paste Template</div>
                     <div class="template-box" id="bab-template">Before: [Describe the current state or problem.]
 After: [Describe the desired future state.]
@@ -463,11 +526,11 @@ Bridge: Choose specific reading plan, set phone aside, create dedicated space, t
             
             <!-- CARE Template -->
             <div class="template-card" id="care-section">
-                <div class="template-header care">
+                <div class="template-header care" onclick="toggleContent(this)">
                     <span class="emoji">📚</span>
                     <span>CARE - Context-Action-Result-Example</span>
                 </div>
-                <div class="template-content">
+                <div class="template-content expanded">
                     <div class="section-title"><span class="emoji">📄</span> Copy-Paste Template</div>
                     <div class="template-box" id="care-template">Context: [Give me the background or setup.]
 Action: [What happened—what did you or someone do?]
@@ -495,11 +558,11 @@ Example: Highlands Bar & Grill in Birmingham - booked 2 months ahead, worth ever
             
             <!-- RISE Template -->
             <div class="template-card" id="rise-section">
-                <div class="template-header rise">
+                <div class="template-header rise" onclick="toggleContent(this)">
                     <span class="emoji">📈</span>
                     <span>RISE - Role-Input-Steps-Expectation</span>
                 </div>
-                <div class="template-content">
+                <div class="template-content expanded">
                     <div class="section-title"><span class="emoji">📄</span> Copy-Paste Template</div>
                     <div class="template-box" id="rise-template">Role: [What persona or role should I adopt?]
 Input: [What information or resources do I have?]
@@ -548,11 +611,36 @@ Expectation: Balanced analysis highlighting intriguing questions while maintaini
         function scrollToSection(sectionId) {
             const element = document.getElementById(sectionId);
             if (element) {
+                // Expand the section if it's collapsed
+                const content = element.querySelector('.template-content');
+                if (content && !content.classList.contains('expanded')) {
+                    content.classList.add('expanded');
+                }
+                
                 element.scrollIntoView({ 
                     behavior: 'smooth',
                     block: 'start'
                 });
             }
+        }
+        
+        function toggleContent(header) {
+            const content = header.nextElementSibling;
+            content.classList.toggle('expanded');
+        }
+        
+        function expandAll() {
+            const allContent = document.querySelectorAll('.template-content');
+            allContent.forEach(content => {
+                content.classList.add('expanded');
+            });
+        }
+        
+        function collapseAll() {
+            const allContent = document.querySelectorAll('.template-content');
+            allContent.forEach(content => {
+                content.classList.remove('expanded');
+            });
         }
     </script>
 </body>
