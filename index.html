@@ -112,8 +112,13 @@
         }
         
         .template-card.active {
-            border: 3px solid #3498db;
-            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.2);
+            border: 4px solid #3498db;
+            box-shadow: 0 12px 35px rgba(52, 152, 219, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        .template-card.active .template-header {
+            background: linear-gradient(135deg, #3498db, #2980b9) !important;
         }
         
         .template-header {
@@ -343,7 +348,7 @@
         <div class="templates-grid">
             <!-- SIPR Template -->
             <div class="template-card active" id="sipr-section">
-                <div class="template-header sipr" onclick="toggleContent(this)">
+                <div class="template-header sipr" onclick="toggleContent(this); return false;">
                     <span class="emoji">📋</span>
                     <span>SIPR - The Universal Template</span>
                 </div>
@@ -375,7 +380,7 @@ Result: Shopping list + cooking schedule + backup plan for weather.</div>
             
             <!-- GOAL Template -->
             <div class="template-card active" id="goal-section">
-                <div class="template-header goal" onclick="toggleContent(this)">
+                <div class="template-header goal" onclick="toggleContent(this); return false;">
                     <span class="emoji">🎯</span>
                     <span>GOAL - Strategic Planning</span>
                 </div>
@@ -407,7 +412,7 @@ Learning: Monitor which budget categories provide best ROI for lifestyle vs. wea
             
             <!-- 5W1H Template -->
             <div class="template-card active" id="w5h1-section">
-                <div class="template-header w5h1" onclick="toggleContent(this)">
+                <div class="template-header w5h1" onclick="toggleContent(this); return false;">
                     <span class="emoji">🔍</span>
                     <span>5W1H - Comprehensive Analysis</span>
                 </div>
@@ -445,7 +450,7 @@ How: Create a simple, equipment-flexible routine with progression tracking.</div
             
             <!-- RTF Template -->
             <div class="template-card active" id="rtf-section">
-                <div class="template-header rtf" onclick="toggleContent(this)">
+                <div class="template-header rtf" onclick="toggleContent(this); return false;">
                     <span class="emoji">⚙️</span>
                     <span>RTF - Role-Task-Format</span>
                 </div>
@@ -474,7 +479,7 @@ Format: Ranking table with QPR scores and brief flavor profiles</div>
             
             <!-- TAG Template -->
             <div class="template-card active" id="tag-section">
-                <div class="template-header tag" onclick="toggleContent(this)">
+                <div class="template-header tag" onclick="toggleContent(this); return false;">
                     <span class="emoji">🏃</span>
                     <span>TAG - Task-Action-Goal</span>
                 </div>
@@ -503,7 +508,7 @@ Goal: Better understand economic factors leading to independence movement.</div>
             
             <!-- BAB Template -->
             <div class="template-card active" id="bab-section">
-                <div class="template-header bab" onclick="toggleContent(this)">
+                <div class="template-header bab" onclick="toggleContent(this); return false;">
                     <span class="emoji">🔄</span>
                     <span>BAB - Before-After-Bridge</span>
                 </div>
@@ -532,7 +537,7 @@ Bridge: Choose specific reading plan, set phone aside, create dedicated space, t
             
             <!-- CARE Template -->
             <div class="template-card active" id="care-section">
-                <div class="template-header care" onclick="toggleContent(this)">
+                <div class="template-header care" onclick="toggleContent(this); return false;">
                     <span class="emoji">📚</span>
                     <span>CARE - Context-Action-Result-Example</span>
                 </div>
@@ -564,7 +569,7 @@ Example: Highlands Bar & Grill in Birmingham - booked 2 months ahead, worth ever
             
             <!-- RISE Template -->
             <div class="template-card active" id="rise-section">
-                <div class="template-header rise" onclick="toggleContent(this)">
+                <div class="template-header rise" onclick="toggleContent(this); return false;">
                     <span class="emoji">📈</span>
                     <span>RISE - Role-Input-Steps-Expectation</span>
                 </div>
@@ -632,8 +637,12 @@ Expectation: Balanced analysis highlighting intriguing questions while maintaini
         }
         
         function toggleContent(header) {
+            // Prevent event bubbling
+            event.preventDefault();
+            event.stopPropagation();
+            
             const content = header.nextElementSibling;
-            const card = header.parentElement;
+            const card = header.closest('.template-card');
             
             // Toggle the content
             content.classList.toggle('expanded');
